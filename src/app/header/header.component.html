@@ -10,9 +10,12 @@
           <a class="nav-link" [routerLink]="['']">Home</a>
         </li>
         <li class="nav-item" [routerLinkActive]="['active']">
+          <a class="nav-link" [routerLink]="'/auth'">Authentication</a>
+        </li>
+        <li class="nav-item" [routerLinkActive]="['active']" *ngIf="!isAuthenticated">
           <a class="nav-link" [routerLink]="'/form1'">Form1</a>
         </li>
-        <li class="nav-item" [routerLinkActive]="['active']">
+        <li class="nav-item" [routerLinkActive]="['active']" *ngIf="!isAuthenticated">
           <a class="nav-link" [routerLink]="['/form2']">Form2</a>
         </li>
       </ul>
