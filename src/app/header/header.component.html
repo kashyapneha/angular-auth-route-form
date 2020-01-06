@@ -12,11 +12,16 @@
         <li class="nav-item" [routerLinkActive]="['active']">
           <a class="nav-link" [routerLink]="'/auth'">Authentication</a>
         </li>
-        <li class="nav-item" [routerLinkActive]="['active']" *ngIf="!isAuthenticated">
+        <li class="nav-item" [routerLinkActive]="['active']" *ngIf="isAuthenticated">
           <a class="nav-link" [routerLink]="'/form1'">Form1</a>
         </li>
-        <li class="nav-item" [routerLinkActive]="['active']" *ngIf="!isAuthenticated">
+        <li class="nav-item" [routerLinkActive]="['active']" *ngIf="isAuthenticated">
           <a class="nav-link" [routerLink]="['/form2']">Form2</a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav ml-auto">
+        <li class="nav-item" *ngIf="isAuthenticated">
+          <a class="nav-link" (click)="onLogout()">Logout</a>
         </li>
       </ul>
     </div>
