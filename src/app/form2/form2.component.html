@@ -1,1 +1,65 @@
-<h1>I'm Reactive Form approach</h1>
+<div class="container">
+  <h5 class="text-center">Reactive Approach</h5>
+  <form [formGroup]="myform" (ngSubmit)="onFormSubmit()">
+    <fieldset formGroupName="name">
+      <div class="form-group">
+        <label for="firstname">First Name</label>
+        <input 
+          type="text" 
+          class="form-control"
+          formControlName="firstName"
+          required>
+        <p class="alert alert-danger" *ngIf="!firstName.valid && firstName.touched">
+          Please enter your first name!</p>
+      </div>
+      <div class="form-group">
+        <label for="lastname">Last Name</label>
+        <input 
+          type="text" 
+          class="form-control"
+          formControlName="lastName"
+          required>
+        <p class="alert alert-danger" *ngIf="!lastName.valid && lastName.touched">
+          Please enter your last name!</p>
+      </div>
+    </fieldset>
+
+    <div class="form-group">
+      <label for="email">E-mail</label>
+      <input 
+        type="email" 
+        class="form-control"
+        formControlName="email"
+        required>
+      <p class="alert alert-danger" *ngIf="!email.valid && email.touched">
+          Please enter the valid email address!</p>
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input 
+        type="password" 
+        class="form-control"
+        formControlName="password"
+        required>
+      <p class="alert alert-danger" *ngIf="!password.valid && password.touched">
+          Please enter the 8-digit valid password!</p>
+    </div>
+
+    <div class="form-group">
+      <label for="language">Language</label>
+      <select 
+        class="form-control"
+        formControlName="language">
+        <option value="">Please select a language</option>
+        <option *ngFor="let lang of langs">{{lang}}</option>
+      </select>
+    </div>
+
+    <button 
+      class="btn btn-primary" 
+      type="submit"
+      [disabled]="!myform.valid"
+      (click)="onFormSubmit()">Submit</button>
+  </form>
+</div>

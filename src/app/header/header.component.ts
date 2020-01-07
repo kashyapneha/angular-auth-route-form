@@ -8,22 +8,22 @@ import { AuthService } from '../auth/auth.service';
   templateUrl: './header.component.html'
 })
 export class HeaderComponent implements OnInit, OnDestroy {
-    isAuthenticated = false;
-    private userSub: Subscription;
+  isAuthenticated = false;
+  private userSub: Subscription;
     
-    constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService) {}
 
-    ngOnInit() {
-        this.userSub = this.authService.user.subscribe(user => {
-            this.isAuthenticated = !!user;
-        });
-    }
+  ngOnInit() {
+    this.userSub = this.authService.user.subscribe(user => {
+        this.isAuthenticated = !!user;
+    });
+  }
 
-    onLogout() {
-        this.authService.logout();
-    }
+  onLogout() {
+    this.authService.logout();
+  }
 
-    ngOnDestroy() {
-        this.userSub.unsubscribe();
-    }
+  ngOnDestroy() {
+    this.userSub.unsubscribe();
+  }
 }
