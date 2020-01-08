@@ -1,1 +1,85 @@
-<h1>I'm Template driven form</h1>
+<div class="container">
+  <div *ngIf="isLoading" style="text-align: center;">
+    <app-loading-spinner></app-loading-spinner>
+  </div>
+  <h5 class="text-center">Template-Driven form approach</h5>
+  <form #f="ngForm" (ngSubmit)="onFormSubmit(f)">
+    <fieldset>
+      <div class="form-group">
+        <label for="firstname">First Name</label>
+        <input 
+          type="text"
+          class="form-control"
+          id="firstname"
+          ngModel
+          name="firstname"
+          required
+          #firstname="ngModel">
+        <p class="alert alert-danger" *ngIf="!firstname.valid && firstname.touched">
+          Please enter a valid name!</p>
+      </div>
+
+      <div class="form-group">
+        <label for="lastname">Last Name</label>
+        <input 
+          type="text"
+          class="form-control"
+          id="lastname"
+          ngModel
+          name="lastname"
+          required
+          #lastname="ngModel">
+        <p class="alert alert-danger" *ngIf="!lastname.valid && lastname.touched">
+          Please enter a valid name!</p>
+      </div>
+    </fieldset>
+
+    <div class="form-group">
+      <label for="email">E-mail</label>
+      <input 
+        type="email"
+        class="form-control"
+        id="email"
+        ngModel
+        name="email"
+        required
+        #email="ngModel">
+      <p class="alert alert-danger" *ngIf="!email.valid && email.touched">
+          Please enter a valid email!</p>
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input 
+        type="password"
+        class="form-control"
+        id="password"
+        ngModel
+        name="password"
+        required
+        #password="ngModel"
+        minlength="6">
+      <p class="alert alert-danger" *ngIf="!password.valid && password.touched">
+          Please enter a valid password!</p>
+    </div>
+
+    <div class="form-group">
+      <label for="language">Language</label>
+      <select 
+        class="form-control"
+        id="language"
+        ngModel
+        name="language"
+        required>
+          <option value="">Please select a language</option>
+          <option *ngFor="let lang of langs" [value]="lang">{{lang}}</option>
+      </select>
+    </div>
+
+    <button 
+      class="btn btn-primary" 
+      type="submit"
+      [disabled]="f.invalid"
+      (click)="onFormSubmit()">Submit</button>
+  </form>
+</div>
