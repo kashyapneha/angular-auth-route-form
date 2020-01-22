@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes, Router } from '@angular/router';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import {MatIconModule} from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { AuthComponent } from './auth/auth.component';
@@ -27,6 +28,7 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     HttpClientModule,
     AngularFontAwesomeModule,
+    MatIconModule,
     RouterModule.forRoot(appRoutes) ],
   declarations: [ 
     AppComponent, 
